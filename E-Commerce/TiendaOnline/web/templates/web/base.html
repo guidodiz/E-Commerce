@@ -8,6 +8,8 @@
     <title> {% block title %} {% endblock %} </title>
     <link rel="stylesheet" href="{% static 'web/styles/base1.css' %}">
     <link rel="icon" href="{% static 'web/img/logo.webp' %}" type="image/webp">
+    {% block extra_links %} {% endblock %}
+    {% block extra_css %} {% endblock %}
 </head>
 <body>
     <header>
