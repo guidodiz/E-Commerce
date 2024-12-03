@@ -5,6 +5,10 @@ body{
     background-color: #fff;
 }
 
+header{
+    background: linear-gradient(to right, #fff, rgb(170, 170, 170));
+}
+
 header div{
     min-height: 30px;
     background-color: black;
@@ -55,7 +59,7 @@ footer i{
 }
 
 .contacto{
-    margin-top: 2vh;
+    margin-top: 5vh;
 }
 
 .iconos-enlaces{
@@ -63,11 +67,42 @@ footer i{
     gap: 20px;
 }
 
-li:hover{
-    font-weight: 500;
-    scale: 1.1;
+nav li{
+    transition: transform 0.2s ease;
 }
 
-a:hover{
-    scale: 1.2;
+nav li:hover{
+    font-weight: 500;
+    transform: scale(1.1);
+}
+
+footer a{
+    transition: transform 0.2s ease;
+}
+
+footer a:hover{
+    transform: scale(1.2);
+}
+
+#whatsapp {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+#whatsapp-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #25D366;
+    padding: 10px;
+}
+
+#whatsapp {
+    transition: transform 0.2s ease;
+}
+
+#whatsapp:hover {
+    transform: scale(1.1);
 }
