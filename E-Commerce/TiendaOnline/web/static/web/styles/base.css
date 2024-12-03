@@ -1,7 +1,10 @@
+*{
+    font-family: 'poppins', sans-serif;
+}
+
 body{
     margin: 0;
     height: 100%;
-    font-family: sans-serif;
     background-color: #fff;
 }
 
@@ -30,6 +33,7 @@ header nav{
 }
 
 header nav ul{
+    margin: 0;
     list-style: none;
     display: flex;
     flex-direction: row;
@@ -40,6 +44,15 @@ li a{
     font-size: 1.8rem;
     color: #fff;
     text-decoration: none;
+}
+
+nav li{
+    transition: transform 0.2s ease;
+}
+
+nav li:hover{
+    font-weight: 500;
+    transform: scale(1.1);
 }
 
 footer{
@@ -65,15 +78,6 @@ footer i{
 .iconos-enlaces{
     display: flex;
     gap: 20px;
-}
-
-nav li{
-    transition: transform 0.2s ease;
-}
-
-nav li:hover{
-    font-weight: 500;
-    transform: scale(1.1);
 }
 
 footer a{
