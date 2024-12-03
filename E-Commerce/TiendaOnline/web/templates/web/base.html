@@ -2,15 +2,22 @@
 
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> {% block title %} {% endblock %} </title>
-    <link rel="stylesheet" href="{% static 'web/styles/base1.css' %}">
+    <link rel="stylesheet" href="{% static 'web/styles/base.css' %}">
     <link rel="icon" href="{% static 'web/img/logo.webp' %}" type="image/webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
     {% block extra_links %} {% endblock %}
     {% block extra_css %} {% endblock %}
 </head>
+
 <body>
     <header>
         <div>Efectivo | Mercado Pago | Transferencia Bancaria</div>
@@ -31,12 +38,22 @@
     </main>
 
     <footer>
-        <H4>REDES SOCIALES</H4>
-        <a href="{% url 'index' %}">(emoji instagram)</a>
-        <h4>CONTACTO</h4>
-        (emoji sobre) <a href="{% url 'index' %}">guidoangeldiz@gmail.com</a>
-        (emoji telefono) <a href="{% url 'index' %}">1126436710</a>
-        (emoji ubicacion) Belgrano R, Capital Federal
+        <h3>REDES SOCIALES</h3>
+        <a href="https://www.instagram.com/tu_usuario_instagram/" target="_blank">
+            <i class="fab fa-instagram"></i></a>
+
+        <h3 class="contacto">CONTACTO</h3>
+        <div class="iconos-enlaces">
+            <a href="mailto:guidoangeldiz@gmail.com">
+                <i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/541126436710" target="_blank">
+                <i class="fab fa-whatsapp"></i></a>
+        </div>
+
+        <p>
+            <i class="fas fa-map-marker-alt"></i> Belgrano R, Capital Federal
+        </p>
     </footer>
 </body>
+
 </html>
