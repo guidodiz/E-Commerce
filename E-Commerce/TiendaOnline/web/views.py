@@ -7,5 +7,5 @@ def index(request):
 def productos(request):
     return render(request, 'web/productos.html')
 
-def contacto(request):
-    return render(request, 'web/contacto.html')
+def novedades(request):
+    return render(request, 'web/novedades.html')
