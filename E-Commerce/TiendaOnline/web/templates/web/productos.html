@@ -7,18 +7,17 @@
 <link rel="stylesheet" href="{% static 'web/styles/productos.css' %}"> {% endblock %}
 
 {% block main %}
-
 <section class="productos">
     {% for producto in productos %}
     <div class="contenedor">
         <img src="{{producto.imagen.url}}" alt="Imagen de {{producto.nombre}}">
         <p>{{producto.nombre}}</p>
         <div class="precio">
-            <span class="precio_anterior">${{producto.precio_anterior}}</span>
-            <span class="precio_nuevo">${{producto.precio_nuevo}}</span>
+            <span class="precio_original">{{producto.precio_original}}</span>
+            <span class="precio_anterior">{{producto.precio_anterior}}</span>
+            <span class="precio_nuevo">{{producto.precio_nuevo}}</span>
         </div>
     </div>
     {% endfor %}
 </section>
-
 {% endblock %}
