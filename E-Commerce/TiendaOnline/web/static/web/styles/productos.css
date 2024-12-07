@@ -1,6 +1,6 @@
 .productos{
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 1fr 1fr 1fr;
     padding-left: 125px;
     padding-right: 125px;
     margin-top: 50px;
@@ -14,8 +14,12 @@
 }
 
 .productos img{
-    height: auto;
+    height: 60vh;
     width: 100%;
+}
+
+.productos p{
+    margin-top: 10px;
 }
 
 .precio{

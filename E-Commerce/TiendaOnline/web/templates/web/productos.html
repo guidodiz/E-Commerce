@@ -4,62 +4,21 @@
 {% block title %} Productos {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/styles/productos12.css' %}"> {% endblock %}
+<link rel="stylesheet" href="{% static 'web/styles/productos.css' %}"> {% endblock %}
 
 {% block main %}
+
 <section class="productos">
+    {% for producto in productos %}
     <div class="contenedor">
-        <img src="{% static 'web/img/logo1.webp' %}" alt="">
-        <p>Nombre</p>
+        <img src="{{producto.imagen.url}}" alt="Imagen de {{producto.nombre}}">
+        <p>{{producto.nombre}}</p>
         <div class="precio">
-            <span class="precio_anterior">$10.000</span>
-            <span class="precio_nuevo">$8.500</span>
+            <span class="precio_anterior">${{producto.precio_anterior}}</span>
+            <span class="precio_nuevo">${{producto.precio_nuevo}}</span>
         </div>
     </div>
-
-    <div class="contenedor">
-        <img src="{% static 'web/img/logo2.webp' %}" alt="">
-        <p>Nombre</p>
-        <div class="precio">
-            <span class="precio_anterior">$10.000</span>
-            <span class="precio_nuevo">$8.500</span>
-        </div>
-    </div>
-
-    <div class="contenedor">
-        <img src="{% static 'web/img/logo3.webp' %}" alt="">
-        <p>nombre</p>
-        <div class="precio">
-            <span class="precio_anterior">$10.000</span>
-            <span class="precio_nuevo">$8.500</span>
-        </div>
-    </div>
-
-    <div class="contenedor">
-        <img src="{% static 'web/img/logo4.webp' %}" alt="">
-        <p>nombre</p>
-        <div class="precio">
-            <span class="precio_anterior">$10.000</span>
-            <span class="precio_nuevo">$8.500</span>
-        </div>
-    </div>
-
-    <div class="contenedor">
-        <img src="{% static 'web/img/logo5.webp' %}" alt="">
-        <p>nombre</p>
-        <div class="precio">
-            <span class="precio_anterior">$10.000</span>
-            <span class="precio_nuevo">$8.500</span>
-        </div>
-    </div>
-
-    <div class="contenedor">
-        <img src="{% static 'web/img/logo6.webp' %}" alt="">
-        <p>nombre</p>
-        <div class="precio">
-            <span class="precio_anterior">$10.000</span>
-            <span class="precio_nuevo">$8.500</span>
-        </div>
-    </div>
+    {% endfor %}
 </section>
+
 {% endblock %}
