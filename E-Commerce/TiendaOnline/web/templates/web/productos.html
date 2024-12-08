@@ -4,13 +4,13 @@
 {% block title %} Productos {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/styles/productos.css' %}"> {% endblock %}
+<link rel="stylesheet" href="{% static 'web/styles/productos1.css' %}"> {% endblock %}
 
 {% block main %}
 <section class="productos">
     {% for producto in productos %}
     <div class="contenedor">
-        <img src="{{producto.imagen.url}}" alt="Imagen de {{producto.nombre}}">
+        <div class="contenedor_imagen"><img src="{{producto.imagen.url}}" alt="Imagen de {{producto.nombre}}"></div>
         <p>{{producto.nombre}}</p>
         <div class="precio">
             <span class="precio_original">{{producto.precio_original}}</span>
