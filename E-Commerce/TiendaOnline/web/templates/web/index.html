@@ -3,11 +3,13 @@
 
 {% block title %} Tienda Online {% endblock %}
 
-{% block extra_css %} <link rel="stylesheet" href="{% static 'web/styles/indexx.css' %}"> {% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'web/styles/indexx.css' %}"> {% endblock %}
 
-{% block main %} 
+{% block main %}
 <aside>
-    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500" data-bs-wrap="true" data-bs-pause="false">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3500" data-bs-wrap="true"
+        data-bs-pause="false">
         <div class="carousel-inner">
             <div class="carousel-item active">
                 <img src="{% static 'web/img/banner1.webp' %}" class="d-block w-100" alt="Imagen 1">
@@ -33,30 +35,16 @@
 <article>
     <h2>PRODUCTOS CON DESCUENTOS</h2>
     <div class="descuentos">
-        <div>
-            <img src="{% static 'web/img/carrusel1.webp' %}" alt="Producto con descuento">
-            <p>Nombre - $10.000</p>
+        {% for producto in productos %}
+        <div class="contenedor">
+            <div class="contenedor_imagen"><img src="{{producto.imagen.url}}" alt="Imagen de {{producto.nombre}}"></div>
+            <p>{{producto.nombre}}</p>
+            <div class="precio">
+                <span class="precio_original">{{producto.precio_original}}</span>
+                <span class="precio_anterior">{{producto.precio_anterior}}</span>
+                <span class="precio_nuevo">{{producto.precio_nuevo}}</span>
+            </div>
         </div>
-        <div>
-            <img src="{% static 'web/img/carrusel1.jpg' %}" alt="Producto con descuento">
-            <p>Nombre - $10.000</p>
-        </div>
-        <div>
-            <img src="{% static 'web/img/carrusel2.jpg' %}" alt="Producto con descuento">
-            <p>Nombre - $10.000</p>
-        </div>
-        <div>
-            <img src="{% static 'web/img/carrusel2.jpg' %}" alt="Producto con descuento">
-            <p>Nombre - $10.000</p>
-        </div>
-        <div>
-            <img src="{% static 'web/img/carrusel3.jpg' %}" alt="Producto con descuento">
-            <p>Nombre - $10.000</p>
-        </div>
-        <div>
-            <img src="{% static 'web/img/carrusel3.jpg' %}" alt="Producto con descuento">
-            <p>Nombre - $10.000</p>
-        </div>
-    </div>
+        {% endfor %}
 </article>
 {% endblock %}

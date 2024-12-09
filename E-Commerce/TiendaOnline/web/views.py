@@ -3,7 +3,13 @@ from django.http import HttpResponse
 from .models import Productos
 
 def index(request):
-    return render(request, 'web/index.html')
+    productos = Productos.objects.filter(tiene_descuento=True)
+
+    context = {
+        'productos': productos
+    }
+
+    return render(request, 'web/index.html', context)
 
 def productos(request):
     productos = Productos.objects.all()
