@@ -33,25 +33,55 @@ h2{
     margin: 50px;
     text-align: center;
     color: black;
+    font-weight: bold;
 }
 
 .descuentos{
-    padding-left: 125px;
-    padding-right: 125px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    justify-items: center;
+    padding-left: 125px;
+    padding-right: 125px;
+    margin-top: 50px;
     gap: 50px;
 }
 
-.descuentos div img{
-    height: 100%;
-    width: 100%;
-    max-height: 80vh;
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.descuentos div p{
-    text-align: center;
+.contenedor_imagen{
+    overflow: hidden;
+    width: 100%;
+}
+
+.descuentos img{
+    height: 60vh;
+    width: 100%;
+    transition: transform 0.4s ease;
+}
+
+.descuentos img:hover{
+    transform: scale(1.1);
+}
+
+.descuentos p{
     margin-top: 10px;
-    font-size: 1.5vw;
+    font-weight: bold;
+}
+
+.precio{
+    display: flex;
+    gap: 10px;
+}
+
+.precio_anterior{
+    text-decoration: line-through;
+    color: #999;
+}
+
+.precio_nuevo{
+    font-weight: bold;
+    color: #e63946;
 }

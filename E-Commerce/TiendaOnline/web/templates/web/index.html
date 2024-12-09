@@ -4,7 +4,7 @@
 {% block title %} Tienda Online {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/styles/indexx.css' %}"> {% endblock %}
+<link rel="stylesheet" href="{% static 'web/styles/index.css' %}"> {% endblock %}
 
 {% block main %}
 <aside>
@@ -40,7 +40,6 @@
             <div class="contenedor_imagen"><img src="{{producto.imagen.url}}" alt="Imagen de {{producto.nombre}}"></div>
             <p>{{producto.nombre}}</p>
             <div class="precio">
-                <span class="precio_original">{{producto.precio_original}}</span>
                 <span class="precio_anterior">{{producto.precio_anterior}}</span>
                 <span class="precio_nuevo">{{producto.precio_nuevo}}</span>
             </div>
