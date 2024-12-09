@@ -4,7 +4,8 @@
 {% block title %} Tienda Online {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/styles/index.css' %}"> {% endblock %}
+<link rel="stylesheet" href="{% static 'web/styles/index.css' %}?v={{ timestamp|date:'U' }}">
+{% endblock %}
 
 {% block main %}
 <aside>
@@ -37,7 +38,7 @@
     <div class="descuentos">
         {% for producto in productos %}
         <div class="contenedor">
-            <div class="contenedor_imagen"><img src="{{producto.imagen.url}}" alt="Imagen de {{producto.nombre}}"></div>
+            <a href="{% url 'vista_producto' producto.id %}" class="contenedor_imagen"><img src="{{producto.imagen.url}}" alt="Imagen de {{producto.nombre}}"></a>
             <p>{{producto.nombre}}</p>
             <div class="precio">
                 <span class="precio_anterior">{{producto.precio_anterior}}</span>

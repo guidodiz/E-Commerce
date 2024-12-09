@@ -1,0 +1,12 @@
+{% extends 'web/base.html' %}
+{% load static %}
+
+{% block title %} {{producto.nombre}} {% endblock %}
+
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'web/styles/vista_producto.css' %}?v={{ timestamp|date:'U' }}">
+{% endblock %}
+
+{% block main %} 
+
+{% endblock %}

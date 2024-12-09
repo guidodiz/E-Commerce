@@ -3,6 +3,10 @@
 
 {% block title %} Novedades {% endblock %}
 
+{% block extra_css %} 
+<link rel="stylesheet" href="{% static 'web/styles/novedades.css' %}?v={{ timestamp|date:'U' }}">
+{% endblock %}
+
 {% block main %} 
 
 {% endblock %}
