@@ -4,9 +4,63 @@
 {% block title %} {{producto.nombre}} {% endblock %}
 
 {% block extra_css %} 
-<link rel="stylesheet" href="{% static 'web/styles/vista_producto.css' %}?v={{ timestamp|date:'U' }}">
+<link rel="stylesheet" href="{% static 'web/styles/vista_productos.css' %}?v={{ timestamp|date:'U' }}">
 {% endblock %}
 
 {% block main %} 
+<div class="contenedor">
+    <div class="fotos_laterales">
+        <img src="{{producto.imagen.url}}" alt="">
+        <img src="{{producto.imagen.url}}" alt="">
+        <img src="{{producto.imagen.url}}" alt="">
+    </div>
 
+    <div class="foto_principal">
+        <img src="{{producto.imagen.url}}" alt="">
+    </div>
+
+    <div class="info">
+        <h1>{{producto.nombre}}</h1>
+        <div class="precios">
+            <span class="precio_original">{{producto.precio_original}}</span>
+            <span class="precio_anterior">{{producto.precio_anterior}}</span>
+            <span class="precio_nuevo">{{producto.precio_nuevo}}</span>
+        </div>
+
+        <div class="descripcion">
+            <p>{{producto.descripcion}}</p>
+        </div>
+
+        <form action="" class="talle_color_cantidad">
+            
+            <label for="talle">Talle:</label>
+            <select id="talle" name="talle">
+                {% if producto.talle1 %}
+                <option value="{{producto.talle1}}">{{producto.talle1}}</option>
+                {% endif %}
+                
+                {% if producto.talle2 %}
+                <option value="{{producto.talle2}}">{{producto.talle2}}</option>
+                {% endif %}
+                
+                {% if producto.talle3 %}
+                <option value="{{producto.talle3}}">{{producto.talle3}}</option>
+                {% endif %}
+
+                {% if producto.talle4 %}
+                <option value="{{producto.talle4}}">{{producto.talle4}}</option>
+                {% endif %}
+                
+                {% if producto.talle5 %}
+                <option value="{{producto.talle5}}">{{producto.talle5}}</option>
+                {% endif %}
+            </select>
+
+            <label for="cantidad">Cantidad:</label>
+            <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+        
+            <button type="submit">COMPRAR</button>
+        </form>
+    </div>
+</div>
 {% endblock %}

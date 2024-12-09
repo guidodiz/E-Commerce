@@ -1,0 +1,87 @@
+.contenedor{
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: 1fr 3fr 3fr;
+    padding-left: 125px;
+    padding-right: 125px;
+}
+
+.fotos_laterales{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    gap: 15px;
+    padding-right: 15px;
+}
+
+.fotos_laterales img{
+    max-height: 100px;
+    width: 80%;
+    object-fit: cover;
+}
+
+.foto_principal img{
+    height: 80vh;
+    width: 100%;
+    object-fit: cover;
+}
+
+.info{
+    padding: 0 0 0 50px;
+}
+
+.precios{
+    display: flex;
+    gap: 15px;
+}
+
+.precio_original{
+    font-weight: bold;
+    font-size: 1.8rem;
+}
+
+.precio_anterior{
+    text-decoration: line-through;
+    color: #999;
+    font-size: 1.8rem;
+}
+
+.precio_nuevo{
+    font-weight: bold;
+    color: #e63946;
+    font-size: 1.8rem;
+}
+
+.descripcion{
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.talle_color_cantidad {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 300px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select, input[type="number"], button {
+    padding: 5px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
