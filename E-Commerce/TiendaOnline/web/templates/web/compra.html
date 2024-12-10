@@ -1,24 +1,48 @@
 {% extends 'web/base.html' %}
 {% load static %}
 
-{% block title %} Compra {% endblock %}
+{% block title %} Resumen de compra {% endblock %}
 
 {% block extra_css %} 
 <link rel="stylesheet" href="{% static 'web/styles/compra.css' %}">
 {% endblock %}
 
-{% block main %} 
-<form method="POST" action="{% url 'compra' %}">
-    {% csrf_token %}
+{% block main %}
+<div class="contenedor_compra">
+    <form method="POST" action="{% url 'compra' %}">
+        {% csrf_token %}
 
-    <h1>Compra del producto</h1>
+        <h1>Resumen de compra</h1>
 
-    <input type="text" name="producto" value="{{ form.producto.value }}" readonly>
-    <input type="text" name="talle" value="{{ form.talle.value }}" readonly>
-    <input type="text" name="cantidad" value="{{ form.cantidad.value }}" readonly>
-    <input type="text" name="precio" value="{{ form.precio.value }}" readonly>
-    <input type="number" name="cantidad" value="1" min="1">
+        <div>
+            <label for="producto">Producto:</label>
+            <input type="text" name="producto" value="{{ form.producto.value }}" readonly>
+        </div>
 
-    <input type="submit" value="Enviar">
-</form>
+        <div>
+            <label for="talle">Talle:</label>
+            <input type="text" name="talle" value="{{ form.talle.value }}" readonly>
+        </div>
+
+        <div>
+            <label for="cantidad">Cantidad:</label>
+            <input type="text" name="cantidad" value="{{ form.cantidad.value }}" readonly>
+        </div>
+
+        <div>
+            <label for="precio">Precio:</label>
+            <input type="text" name="precio" value="{{ form.precio.value }}" readonly>
+        </div>
+
+        <input type="submit" value="COMPRAR">
+    </form>
+</div>
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="alert {{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
 {% endblock %}

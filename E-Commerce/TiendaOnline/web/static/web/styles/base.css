@@ -22,8 +22,16 @@ header div{
     text-align: center;
 }
 
+.messages {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    width: 100%;
+    text-align: center;
+}
+
 header img{
-    width: 25vw;
+    width: 20vw;
     display: block;
     margin: 0 auto;
 }

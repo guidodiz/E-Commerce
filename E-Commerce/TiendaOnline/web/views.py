@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
 from django.utils.timezone import now
 from django.core.mail import send_mail
 from django.conf import settings
@@ -54,15 +55,20 @@ def compra(request):
     producto_id = request.GET.get('producto_id')
     talle = request.GET.get('talle')
     cantidad = int(request.GET.get('cantidad', 1))
+    producto = None
+    form = None
 
     if producto_id:
         producto = Productos.objects.get(id=producto_id)
         precio = producto.precio_nuevo if producto.precio_nuevo else producto.precio_original 
 
+        if not talle:
+            talle = producto.talle1
+
         initial_data = {
             'producto': producto.nombre,
-            'talle': producto.talle,
-            'cantidad': producto.cantidad,
+            'talle': talle,
+            'cantidad': cantidad,
             'precio': precio
         }
 

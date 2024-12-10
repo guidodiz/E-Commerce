@@ -28,4 +28,4 @@ class Compra(models.Model):
     fecha = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de compra')
 
     def __str__(self):
-        return f'{self.producto} - talle: {talle} - {self.cantidad} unidades'
+        return f'{self.producto} | talle: {self.talle} | cantidad: {self.cantidad}'
