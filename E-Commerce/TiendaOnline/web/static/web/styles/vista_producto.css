@@ -20,6 +20,10 @@
     object-fit: cover;
 }
 
+.fotos_laterales:hover{
+    cursor: pointer;
+}
+
 .foto_principal img{
     height: 80vh;
     width: 100%;
