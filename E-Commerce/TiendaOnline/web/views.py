@@ -1,7 +1,10 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.utils.timezone import now
-from .models import Productos
+from django.core.mail import send_mail
+from django.conf import settings
+from .models import Productos, Compra
+from .forms import CompraModelForm
 
 def index(request):
     time = now()
@@ -44,3 +47,33 @@ def vista_producto(request, id):
     }
 
     return render(request, 'web/vista_producto.html', context)
+
+def compra(request):
+    context = {}
+
+    producto_id = request.GET.get('producto_id')
+    talle = request.GET.get('talle')
+    cantidad = int(request.GET.get('cantidad', 1))
+
+    if producto_id:
+        producto = Productos.objects.get(id=producto_id)
+        precio = producto.precio_nuevo if producto.precio_nuevo else producto.precio_original 
+
+        initial_data = {
+            'producto': producto.nombre,
+            'talle': producto.talle,
+            'cantidad': producto.cantidad,
+            'precio': precio
+        }
+
+        form = CompraModelForm(initial=initial_data)
+
+    if request.method == "POST":
+        form = CompraModelForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'La compra fue realizada con éxito')
+            return redirect('index')
+
+    context['form'] = form
+    return render(request, 'web/compra.html', context)

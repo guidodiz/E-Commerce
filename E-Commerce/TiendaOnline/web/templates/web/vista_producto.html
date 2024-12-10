@@ -43,7 +43,7 @@
             <p>{{producto.descripcion}}</p>
         </div>
 
-        <form action="" class="talle_color_cantidad">
+        <form method="GET" action="{% url 'compra' %}" class="talle_color_cantidad">
             
             <label for="talle">Talle:</label>
             <select id="talle" name="talle">
@@ -70,6 +70,8 @@
 
             <label for="cantidad">Cantidad:</label>
             <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+
+            <input type="hidden" name="producto_id" value="{{ producto.id }}">
         
             <button type="submit">COMPRAR</button>
         </form>
