@@ -69,7 +69,7 @@ def compra(request):
             'producto': producto.nombre,
             'talle': talle,
             'cantidad': cantidad,
-            'precio': precio
+            'precio': precio,
         }
 
         form = CompraModelForm(initial=initial_data)

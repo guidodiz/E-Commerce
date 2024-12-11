@@ -25,7 +25,13 @@ class Compra(models.Model):
     talle = models.CharField(max_length=50, verbose_name='Talle')
     cantidad = models.IntegerField(verbose_name='Cantidad')
     precio = models.CharField(max_length=15, verbose_name='Precio')
-    fecha = models.DateTimeField(auto_now_add=True, verbose_name='Fecha de compra')
+
+    MEDIOS_DE_PAGO = [
+        ('Efectivo', 'Efectivo'),
+        ('MP', 'Mercado Pago'),
+        ('Transferencia', 'Transferencia Bancaria'),
+    ]
+    medio_de_pago = models.CharField(max_length=25, choices=MEDIOS_DE_PAGO)
 
     def __str__(self):
-        return f'{self.producto} | talle: {self.talle} | cantidad: {self.cantidad}'
+        return f'{self.producto} | talle: {self.talle} | cantidad: {self.cantidad} | medio de pago: {self.medio_de_pago}'

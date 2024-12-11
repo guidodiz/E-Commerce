@@ -17,7 +17,7 @@
     color: #333;
 }
 
-.contenedor_compra input[type="text"] {
+.contenedor_compra input[type="text"], select {
     width: 100%;
     padding: 10px;
     margin-bottom: 15px;
@@ -48,4 +48,19 @@
 
 .contenedor_compra input[type="submit"]:hover {
     background-color: #45a049;
+}
+
+#pago_efectivo{
+    border-bottom: 2px solid #ddd;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+}
+
+#datos_transferencia ul{
+    list-style: none;
+    border-bottom: 2px solid #ddd;
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
 }

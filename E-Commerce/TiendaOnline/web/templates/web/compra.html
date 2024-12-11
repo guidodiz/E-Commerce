@@ -34,7 +34,32 @@
             <input type="text" name="precio" value="{{ form.precio.value }}" readonly>
         </div>
 
-        <input type="submit" value="COMPRAR">
+        <div>
+            <label for="medio_de_pago">Medio de pago</label>
+            <select name="medio_de_pago" id="medio_de_pago" required>
+                <option value="">Seleccionar...</option>
+                <option value="Efectivo">Efectivo</option>
+                <option value="MP">Mercado Pago</option>
+                <option value="Transferencia">Transferencia Bancaria</option>
+            </select>
+        </div>
+
+        <div id="pago_efectivo" hidden>
+            <p>En caso de pagar en efectivo, nos estaremos contactando via Whatsapp para coordinar el envio o retiro</p>
+        </div>
+
+        <div id="datos_transferencia" hidden>
+            <ul>
+                <li>Número de cuenta: </li>
+                <li>CUIT: </li>
+                <li>Razón Social: </li>
+                <li>CBU: </li>
+                <li>Alias: </li>
+                <li>Banco </li>
+            </ul>
+        </div>
+
+        <input type="submit" value="CONFIRMAR COMPRA">
     </form>
 </div>
 
@@ -45,4 +70,9 @@
         {% endfor %}
     </ul>
 {% endif %}
+
+{% block extra_js %}
+<script src="{% static 'web/js/compra.js' %}"></script>
+{% endblock %}
+
 {% endblock %}
