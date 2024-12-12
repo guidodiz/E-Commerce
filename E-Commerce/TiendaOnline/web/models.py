@@ -21,32 +21,32 @@ class Productos(models.Model):
         return f'{self.nombre}'
 
 class Cliente(models.Model):
-    nombre = models.CharField(max_length=255, verbose_name='Nombre')
-    email = models.EmailField(max_length=255, verbose_name='Email')
-    telefono = models.CharField(max_length=30, verbose_name='Teléfono')
+    nombre = models.CharField(max_length=255, verbose_name='Nombre', blank=False)
+    email = models.EmailField(max_length=255, verbose_name='Email', blank=False)
+    telefono = models.CharField(max_length=30, verbose_name='Teléfono', blank=False)
 
     def __str__(self):
         return f'{self.nombre} | {self.email} | {self.telefono}'
 
 class Compras(models.Model):
-    producto = models.CharField(max_length=255, verbose_name='Producto')
-    talle = models.CharField(max_length=50, verbose_name='Talle')
-    cantidad = models.IntegerField(verbose_name='Cantidad')
-    precio = models.CharField(max_length=15, verbose_name='Precio')
+    producto = models.CharField(max_length=255, verbose_name='Producto', blank=False)
+    talle = models.CharField(max_length=50, verbose_name='Talle', blank=False)
+    cantidad = models.IntegerField(verbose_name='Cantidad', blank=False)
+    precio = models.CharField(max_length=15, verbose_name='Precio', blank=False)
 
     MEDIOS_DE_PAGO = [
         ('Efectivo', 'Efectivo'),
         ('MP', 'Mercado Pago'),
         ('Transferencia', 'Transferencia Bancaria'),
     ]
-    medio_de_pago = models.CharField(max_length=25, choices=MEDIOS_DE_PAGO)
+    medio_de_pago = models.CharField(max_length=25, choices=MEDIOS_DE_PAGO, blank=False)
 
     ENVIO = [
         ('Envío', 'Envío'),
         ('Retiro', 'Retiro'),
     ]
-    envio = models.CharField(max_length=30, choices=ENVIO)
-    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='compras')
+    envio = models.CharField(max_length=30, choices=ENVIO, blank=False)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='compras', blank=False)
 
     def __str__(self):
         return f'{self.producto} | talle: {self.talle} | cantidad: {self.cantidad} | medio de pago: {self.medio_de_pago} | {self.envio}'

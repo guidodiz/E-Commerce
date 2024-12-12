@@ -77,9 +77,20 @@ def compra(request):
     if request.method == "POST":
         form = CompraModelForm(request.POST)
         if form.is_valid():
-            form.save()
+            compra = form.save(commit=False)
+            cliente = Cliente.objects.create(
+                nombre=request.POST['nombre'],
+                email=request.POST['email'],
+                telefono=request.POST['telefono']
+            )
+
+            compra.cliente = cliente
+            compra.save()
+
             messages.success(request, '¡Gracias por realizar tu compra!')
             return redirect('index')
+        else:
+            messages.error(request, 'Ocurrió un error. Revisa los datos e intenta de nuevo.')
 
     context['form'] = form
     return render(request, 'web/compra.html', context)
