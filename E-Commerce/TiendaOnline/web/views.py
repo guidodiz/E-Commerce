@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.utils.timezone import now
 from django.core.mail import send_mail
 from django.conf import settings
-from .models import Productos, Compra
+from .models import Productos, Compras, Cliente
 from .forms import CompraModelForm
 
 def index(request):
@@ -78,7 +78,7 @@ def compra(request):
         form = CompraModelForm(request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, 'La compra fue realizada con éxito')
+            messages.success(request, '¡Gracias por realizar tu compra!')
             return redirect('index')
 
     context['form'] = form

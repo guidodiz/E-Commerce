@@ -20,7 +20,15 @@ class Productos(models.Model):
     def __str__(self):
         return f'{self.nombre}'
 
-class Compra(models.Model):
+class Cliente(models.Model):
+    nombre = models.CharField(max_length=255, verbose_name='Nombre')
+    email = models.EmailField(max_length=255, verbose_name='Email')
+    telefono = models.CharField(max_length=30, verbose_name='Teléfono')
+
+    def __str__(self):
+        return f'{self.nombre} | {self.email} | {self.telefono}'
+
+class Compras(models.Model):
     producto = models.CharField(max_length=255, verbose_name='Producto')
     talle = models.CharField(max_length=50, verbose_name='Talle')
     cantidad = models.IntegerField(verbose_name='Cantidad')
@@ -33,5 +41,12 @@ class Compra(models.Model):
     ]
     medio_de_pago = models.CharField(max_length=25, choices=MEDIOS_DE_PAGO)
 
+    ENVIO = [
+        ('Envío', 'Envío'),
+        ('Retiro', 'Retiro'),
+    ]
+    envio = models.CharField(max_length=30, choices=ENVIO)
+    cliente = models.ForeignKey(Cliente, on_delete=models.CASCADE, related_name='compras')
+
     def __str__(self):
-        return f'{self.producto} | talle: {self.talle} | cantidad: {self.cantidad} | medio de pago: {self.medio_de_pago}'
+        return f'{self.producto} | talle: {self.talle} | cantidad: {self.cantidad} | medio de pago: {self.medio_de_pago} | {self.envio}'

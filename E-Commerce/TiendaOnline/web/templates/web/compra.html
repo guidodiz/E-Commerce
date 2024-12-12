@@ -1,9 +1,9 @@
 {% extends 'web/base.html' %}
 {% load static %}
 
-{% block title %} Resumen de compra {% endblock %}
+{% block title %} Procesar compra {% endblock %}
 
-{% block extra_css %} 
+{% block extra_css %}
 <link rel="stylesheet" href="{% static 'web/styles/compra.css' %}">
 {% endblock %}
 
@@ -12,69 +12,108 @@
     <form method="POST" action="{% url 'compra' %}">
         {% csrf_token %}
 
-        <h1>Resumen de compra</h1>
+        <div id="procesar_compra">
+            <h1>Procesar Compra</h1>
 
-        <div>
-            <label for="producto">Producto:</label>
-            <input type="text" name="producto" value="{{ form.producto.value }}" readonly>
+            <div>
+                <label for="medio_de_pago">Medio de pago</label>
+                <select name="medio_de_pago" id="medio_de_pago" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="MP">Mercado Pago</option>
+                    <option value="Transferencia">Transferencia Bancaria</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="envio">Forma de envío</label>
+                <select name="envio" id="envio" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Envio">Envío</option>
+                    <option value="Retiro">Retiro (Belgrano R)</option>
+                </select>
+            </div>
+
+            <div class="datos_contacto">
+                <h1>Datos para ponerse en contacto</h1>
+
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre">
+                
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
+                
+                <label for="wp">Teléfono</label>
+                <input type="number" name="wp" id="wp">
+            </div>
+
+            <button id="siguiente">SIGUIENTE</button>
         </div>
 
-        <div>
-            <label for="talle">Talle:</label>
-            <input type="text" name="talle" value="{{ form.talle.value }}" readonly>
+        <div id="resumen_compra" hidden>
+            <h1>Resumen de compra</h1>
+
+            <div>
+                <label for="producto">Producto:</label>
+                <input type="text" name="producto" value="{{ form.producto.value }}" readonly>
+            </div>
+
+            <div>
+                <label for="talle">Talle:</label>
+                <input type="text" name="talle" value="{{ form.talle.value }}" readonly>
+            </div>
+
+            <div>
+                <label for="cantidad">Cantidad:</label>
+                <input type="text" name="cantidad" value="{{ form.cantidad.value }}" readonly>
+            </div>
+
+            <div>
+                <label for="precio">Precio:</label>
+                <input type="text" name="precio" value="{{ form.precio.value }}" readonly>
+            </div>
+
+            <div>
+                <label for="resumenMedioDePago">Medio de pago</label>
+                <input type="text" name="resumenMedioDePago" readonly>
+            </div>
+
+            <div>
+                <label for="resumenEnvio">Envío</label>
+                <input type="text" name="resumenEnvio" readonly>
+            </div>
+
+            <div>
+                <label for="resumenNombre">Nombre</label>
+                <input type="text" name="resumenNombre" readonly>
+            </div>
+
+            <div>
+                <label for="resumenEmail">Email</label>
+                <input type="text" name="resumenEmail" readonly>
+            </div>
+
+            <div>
+                <label for="resumenWp">Teléfono</label>
+                <input type="text" name="resumenWp" readonly>
+            </div>
+            
         </div>
 
-        <div>
-            <label for="cantidad">Cantidad:</label>
-            <input type="text" name="cantidad" value="{{ form.cantidad.value }}" readonly>
-        </div>
-
-        <div>
-            <label for="precio">Precio:</label>
-            <input type="text" name="precio" value="{{ form.precio.value }}" readonly>
-        </div>
-
-        <div>
-            <label for="medio_de_pago">Medio de pago</label>
-            <select name="medio_de_pago" id="medio_de_pago" required>
-                <option value="">Seleccionar...</option>
-                <option value="Efectivo">Efectivo</option>
-                <option value="MP">Mercado Pago</option>
-                <option value="Transferencia">Transferencia Bancaria</option>
-            </select>
-        </div>
-
-        <div id="pago_efectivo" hidden>
-            <p>En caso de pagar en efectivo, nos estaremos contactando via Whatsapp para coordinar el envio o retiro</p>
-            <label for="opcion_efectivo">Ingrese su número de telefono</label>
-            <input type="number" name="opcion_efectivo" id="opcion_efectivo">
-        </div>
-
-        <div id="datos_transferencia" hidden>
-            <ul>
-                <li>Número de cuenta: </li>
-                <li>CUIT: </li>
-                <li>Razón Social: </li>
-                <li>CBU: </li>
-                <li>Alias: </li>
-                <li>Banco </li>
-            </ul>
-        </div>
-
-        <input type="submit" value="CONFIRMAR COMPRA">
+        <input type="submit" value="CONFIRMAR COMPRA" id="boton_compra" hidden>
     </form>
 </div>
 
 {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li class="alert {{ message.tags }}">{{ message }}</li>
-        {% endfor %}
-    </ul>
+<ul class="messages">
+    {% for message in messages %}
+    <li class="alert {{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
 {% endif %}
 
 {% block extra_js %}
-<script src="{% static 'web/js/compra.js' %}"></script>
+<script src="{% static 'web/js/resumen_compra.js' %}"></script>
 {% endblock %}
 
 {% endblock %}
