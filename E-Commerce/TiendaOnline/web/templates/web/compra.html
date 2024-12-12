@@ -1,10 +1,10 @@
 {% extends 'web/base.html' %}
 {% load static %}
 
-{% block title %} Procesar compra {% endblock %}
+{% block title %} Finalizar compra {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/styles/compra.css' %}">
+<link rel="stylesheet" href="{% static 'web/styles/finalizar_compra.css' %}">
 {% endblock %}
 
 {% block main %}
@@ -12,45 +12,7 @@
     <form method="POST" action="{% url 'compra' %}">
         {% csrf_token %}
 
-        <div id="procesar_compra">
-            <h1>Procesar Compra</h1>
-
-            <div>
-                <label for="medio_de_pago">Medio de pago</label>
-                <select name="medio_de_pago" id="medio_de_pago" required>
-                    <option value="">Seleccionar...</option>
-                    <option value="Efectivo">Efectivo</option>
-                    <option value="MP">Mercado Pago</option>
-                    <option value="Transferencia">Transferencia Bancaria</option>
-                </select>
-            </div>
-
-            <div>
-                <label for="envio">Forma de envío</label>
-                <select name="envio" id="envio" required>
-                    <option value="">Seleccionar...</option>
-                    <option value="Envio">Envío</option>
-                    <option value="Retiro">Retiro (Belgrano R)</option>
-                </select>
-            </div>
-
-            <div class="datos_contacto">
-                <h1>Datos para ponerse en contacto</h1>
-
-                <label for="nombre">Nombre</label>
-                <input type="text" name="nombre" id="nombre">
-                
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email">
-                
-                <label for="wp">Teléfono</label>
-                <input type="number" name="wp" id="wp">
-            </div>
-
-            <button id="siguiente">SIGUIENTE</button>
-        </div>
-
-        <div id="resumen_compra" hidden>
+        <div id="resumen_compra">
             <h1>Resumen de compra</h1>
 
             <div>
@@ -73,34 +35,53 @@
                 <input type="text" name="precio" value="{{ form.precio.value }}" readonly>
             </div>
 
+            <h1>Datos para finalizar la compra</h1>
+
             <div>
-                <label for="resumenMedioDePago">Medio de pago</label>
-                <input type="text" name="resumenMedioDePago" readonly>
+                <label for="medio_de_pago">Medio de pago</label>
+                <select name="medio_de_pago" id="medio_de_pago" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Efectivo">Efectivo</option>
+                    <option value="MP">Mercado Pago</option>
+                    <option value="Transferencia">Transferencia Bancaria</option>
+                </select>
+            </div>
+
+            <div id="pago_efectivo" hidden>
+                En caso de seleccionar efectivo, el mismo se realiza al recibir el producto.
+            </div>
+
+            <div id="pago_transferencia" hidden>
+                En caso de seleccionar Transferencia Bancaria, nos pondremos en contacto para coordinar la entrega del producto una vez que recibamos el comprobante.
             </div>
 
             <div>
-                <label for="resumenEnvio">Envío</label>
-                <input type="text" name="resumenEnvio" readonly>
+                <label for="envio">Forma de envío (se coordina por Whatsapp)</label>
+                <select name="envio" id="envio" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Envio">Envío</option>
+                    <option value="Retiro">Retiro (Belgrano R)</option>
+                </select>
             </div>
 
             <div>
-                <label for="resumenNombre">Nombre</label>
-                <input type="text" name="resumenNombre" readonly>
+                <label for="nombre">Nombre</label>
+                <input type="text" name="nombre" id="nombre">
             </div>
 
             <div>
-                <label for="resumenEmail">Email</label>
-                <input type="text" name="resumenEmail" readonly>
+                <label for="email">Email</label>
+                <input type="email" name="email" id="email">
             </div>
 
             <div>
-                <label for="resumenWp">Teléfono</label>
-                <input type="text" name="resumenWp" readonly>
+                <label for="telefono">Teléfono</label>
+                <input type="number" name="telefono" id="telefono">
             </div>
-            
         </div>
 
-        <input type="submit" value="CONFIRMAR COMPRA" id="boton_compra" hidden>
+        <input type="submit" value="COMPRAR" id="boton_compra">
+        
     </form>
 </div>
 
@@ -113,7 +94,7 @@
 {% endif %}
 
 {% block extra_js %}
-<script src="{% static 'web/js/resumen_compra.js' %}"></script>
+<script src="{% static 'web/js/compra.js' %}"></script>
 {% endblock %}
 
 {% endblock %}
