@@ -87,6 +87,53 @@ def compra(request):
             compra.cliente = cliente
             compra.save()
 
+#----------------------------------------------------------------------------
+
+            asunto_cliente = "Detalles de la compra"
+            mensaje_cliente = f"""
+            Hola {cliente.nombre}, ¡gracias por tu compra!
+            
+            Detalles de la compra:
+            {compra.producto}
+            Talle: {compra.talle}
+            Cantidad: {compra.cantidad}
+            Precio: {compra.precio}
+            Medio de Pago: {compra.medio_de_pago}
+            {compra.envio}
+
+            """
+            if compra.medio_de_pago == "Transferencia":
+                mensaje_cliente += """
+            Información para transferir:
+            - Banco: XYZ
+            - CBU: 00000000000000000000
+            - Alias: ARCANAIN.DUMENTARIA
+            - Titular: Arcana Indumentaria
+            """
+
+            send_mail(asunto_cliente, mensaje_cliente, settings.DEFAULT_FROM_EMAIL, [cliente.email])
+
+
+            asunto_admin = "Nueva Compra Realizada"
+            mensaje_admin = f"""
+            Se ha realizado una nueva compra.
+
+            Datos del cliente:
+            Nombre: {cliente.nombre}
+            Email: {cliente.email}
+            Teléfono: {cliente.telefono}
+
+            Detalles de la compra:
+            {compra.producto}
+            Talle: {compra.talle}
+            Cantidad: {compra.cantidad}
+            Precio: {compra.precio}
+            Medio de Pago: {compra.medio_de_pago}
+            {compra.envio}
+            """
+
+            send_mail(asunto_admin, mensaje_admin, settings.DEFAULT_FROM_EMAIL, ["guidoangeldiz@gmail.com"])
+
             messages.success(request, '¡Gracias por realizar tu compra!')
             return redirect('index')
         else:

@@ -136,4 +136,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'guidoangeldiz@gmail.com'
-EMAIL_HOST_PASSWORD = 'guidodiz1998'
+EMAIL_HOST_PASSWORD = 'lxlh ujoa osir rtqy'
