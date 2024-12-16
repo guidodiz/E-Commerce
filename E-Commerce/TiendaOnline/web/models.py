@@ -42,7 +42,7 @@ class Compras(models.Model):
     medio_de_pago = models.CharField(max_length=25, choices=MEDIOS_DE_PAGO, blank=False)
 
     ENVIO = [
-        ('Envío', 'Envío'),
+        ('Envio', 'Envío'),
         ('Retiro', 'Retiro'),
     ]
     envio = models.CharField(max_length=30, choices=ENVIO, blank=False)

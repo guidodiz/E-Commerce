@@ -110,6 +110,13 @@ def compra(request):
             - Alias: ARCANAIN.DUMENTARIA
             - Titular: Arcana Indumentaria
             """
+            elif compra.medio_de_pago == "MP":
+                mensaje_cliente += """
+            Información para transferir:
+            - Cuenta: Mercado Pago
+            - Alias: guidodiz.mp
+            - CVU: 0000003100002830997264
+            """
 
             send_mail(asunto_cliente, mensaje_cliente, settings.DEFAULT_FROM_EMAIL, [cliente.email])
 

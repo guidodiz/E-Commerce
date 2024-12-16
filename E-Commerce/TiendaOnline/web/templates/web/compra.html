@@ -4,7 +4,7 @@
 {% block title %} Finalizar compra {% endblock %}
 
 {% block extra_css %}
-<link rel="stylesheet" href="{% static 'web/styles/finalizar_compra.css' %}">
+<link rel="stylesheet" href="{% static 'web/styles/compra.css' %}">
 {% endblock %}
 
 {% block main %}
@@ -51,8 +51,12 @@
                 En caso de seleccionar efectivo, el mismo se realiza al recibir el producto.
             </div>
 
+            <div id="pago_mp" hidden>
+                Te llegará un mail con los datos para realizar la transferencia y nos pondremos en contacto para coordinar la entrega del producto una vez que recibamos el comprobante.
+            </div>
+
             <div id="pago_transferencia" hidden>
-                Te llegarán los datos para realizar la transferencia al mail y nos pondremos en contacto para coordinar la entrega del producto una vez que recibamos el comprobante.
+                Te llegará un mail con los datos para realizar la transferencia y nos pondremos en contacto para coordinar la entrega del producto una vez que recibamos el comprobante.
             </div>
 
             <div>
@@ -94,7 +98,7 @@
 {% endif %}
 
 {% block extra_js %}
-<script src="{% static 'web/js/compra.js' %}"></script>
+<script src="{% static 'web/js/compras.js' %}"></script>
 {% endblock %}
 
 {% endblock %}

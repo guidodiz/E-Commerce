@@ -51,7 +51,7 @@
     background-color: #45a049;
 }
 
-#pago_efectivo, #pago_transferencia{
+#pago_efectivo, #pago_transferencia, #pago_mp{
     border-bottom: 2px solid #ddd;
     width: 100%;
     padding: 10px;
