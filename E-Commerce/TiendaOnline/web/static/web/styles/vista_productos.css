@@ -89,3 +89,69 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+/* --------------------------------------- */
+
+@media (max-width: 576px){
+
+    .contenedor{
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "foto_principal"
+        "fotos_laterales"
+        "info";
+        padding-left: 80px;
+        padding-right: 80px;
+        gap: 10px;
+    }
+
+    .foto_principal{
+        grid-area: foto_principal;
+    }
+
+    .foto_principal img{
+        height: 70vh;
+        object-fit: cover;
+    }
+
+    .fotos_laterales{
+        grid-area: fotos_laterales;
+        flex-direction: row;
+        align-items: center;
+        gap: 10px;
+        padding-right: 0;
+    }
+
+    .fotos_laterales img{
+        max-height: 100px;
+        object-fit: cover;
+    }
+
+    .info{
+        grid-area: info;
+        padding: 0;
+        margin-top: 30px;
+        text-align: center;
+    }
+
+    .precios{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .descripcion{
+        margin-bottom: 30px;
+    }
+
+    form{
+        margin: auto;
+    }
+
+    label{
+        text-align: start;
+    }
+
+}

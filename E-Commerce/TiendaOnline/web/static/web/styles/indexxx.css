@@ -85,3 +85,26 @@ h2{
     font-weight: bold;
     color: #e63946;
 }
+
+/* -------------------------------------------- */
+
+@media (max-width: 576px){
+
+    .carousel-inner img {
+        width: 100%;
+        height: 58vh;
+    }
+
+    h2{
+        font-size: 22px;
+    }
+
+    .descuentos{
+        grid-template-columns: 1fr;
+    }
+
+    .descuentos img{
+        height: 40vh;
+    }
+
+}

@@ -1,3 +1,10 @@
+h2{
+    margin: 50px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
+
 .productos{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -50,4 +57,23 @@
 .precio_nuevo{
     font-weight: bold;
     color: #e63946;
+}
+
+/* -------------------------------------- */
+
+@media (max-width: 576px){
+
+    h2{
+        font-size: 22px;
+        margin: 30px;
+    }
+    
+    .productos{
+        grid-template-columns: 1fr;
+    }
+
+    .productos img{
+        height: 40vh;
+    }
+
 }

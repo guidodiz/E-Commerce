@@ -59,3 +59,14 @@
     color: #31708f;
     font-weight: bold;
 }
+
+/* ------------------------------------------- */
+
+@media (max-width: 576px){
+
+    .contenedor_compra{
+        width: 100%;
+        margin: auto;
+    }
+
+}
